@@ -5,7 +5,7 @@ from xgboost import XGBRegressor
 
 # 1. Page Configuration
 st.set_page_config(page_title="PJME Load Forecasting", layout="wide")
-st.title("⚡ Smart Grid Load Forecasting (PJME)")
+st.title(" Smart Grid Load Forecasting (PJME)")
 st.write("Interactive application for hourly electricity demand forecasting using XGBoost.")
 
 # 2. Define features in the exact same order used during training
@@ -68,7 +68,7 @@ def recursive_forecast(model, history_series, features, n_hours=24):
 try:
     model = load_model()
     df = load_data()
-    st.success("Model and data loaded successfully! ✅")
+    st.success("Model and data loaded successfully!")
 except Exception as e:
     st.error(f"Error loading model or data. Details: {e}")
     st.stop()
@@ -76,7 +76,7 @@ except Exception as e:
 # --- إعدادات اختيار التاريخ ---
 last_available_date = df.index.max().date()
 first_available_date = df.index.min().date()
-max_allowed_date = last_available_date + pd.Timedelta(days=30) 
+# تم إزالة max_allowed_date للسماح باختيار أي سنة
 
 st.sidebar.header("⚙️ Forecast Settings")
 st.sidebar.write(f"**Historical Data Range:**\n{first_available_date} to {last_available_date}")
@@ -85,10 +85,10 @@ target_date = st.sidebar.date_input(
     "Select Target Date:",
     value=last_available_date + pd.Timedelta(days=1),
     min_value=first_available_date, 
-    max_value=max_allowed_date
+    max_value=None # التعديل هنا: تعيين القيمة كـ None لفتح اختيار السنوات في المستقبل
 )
 
-if st.sidebar.button("Get Forecast 🚀"):
+if st.sidebar.button("Get Forecast "):
     
     with st.spinner(f'Processing data for {target_date}...'):
         
