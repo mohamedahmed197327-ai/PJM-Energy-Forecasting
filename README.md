@@ -30,5 +30,4 @@ Accurate electricity load forecasting is critical for smart grid management, ene
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/mohamedahmed197327-ai/PJM-Energy-Forecasting.git](https://github.com/mohamedahmed197327-ai/PJM-Energy-Forecasting.git)
-   cd PJM-Energy-Forecasting
+   git clone https://github.com/mohamedahmed197327-ai/PJM-Energy-Forecasting.git
